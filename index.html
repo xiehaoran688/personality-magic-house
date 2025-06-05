@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Personality Magic House</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#6a0dad" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+  <video autoplay muted loop id="bgVideo">
+    <source src="assets/space-loop.mp4" type="video/mp4" />
+  </video>
+
+  <div id="welcome" class="container center">
+    <img src="assets/magic-logo.png" width="100" />
+    <h1 class="glow-title">🔮 Welcome to the Magic House 🔮</h1>
+    <p>Discover your magical personality...</p>
+    <button onclick="startQuiz()">Start Your Journey</button>
+  </div>
+
+  <section class="intro-section">
+    <h2 class="intro-title">🔮 Discover Your Magical Identity</h2>
+    <p class="intro-subtitle">Start your journey with honesty and wonder. Let the elements reveal who you truly are.</p>
+
+    <div class="intro-cards">
+      <div class="intro-card">
+        <div class="intro-icon">🧭</div>
+        <h3>Be Authentic</h3>
+        <p>Answer with honesty to unveil your magical self.</p>
+      </div>
+      <div class="intro-card">
+        <div class="intro-icon">🔍</div>
+        <h3>Gain Insight</h3>
+        <p>Discover how your element shapes your choices and values.</p>
+      </div>
+      <div class="intro-card">
+        <div class="intro-icon">🪄</div>
+        <h3>Unlock Your Potential</h3>
+        <p>Grow into the person you want to be with your elemental strengths.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="quiz" class="container" style="display:none;">
+    <h2>🔮 Answer these mystical questions...</h2>
+    <form id="quizForm">
+      <div class="question-group">
+        <h3>🌍 Your Ideal Environment</h3>
+        <label>1. Which place do you prefer?</label>
+        <label><input type="radio" name="q1" value="fire"> A lively festival</label>
+        <label><input type="radio" name="q1" value="ice"> A quiet library</label>
+        <label><input type="radio" name="q1" value="wind"> A mountain peak</label>
+        <label><input type="radio" name="q1" value="earth"> A cozy cabin</label>
+
+        <label>2. You usually make decisions based on:</label>
+        <label><input type="radio" name="q2" value="fire"> Passion and gut</label>
+        <label><input type="radio" name="q2" value="ice"> Logic and facts</label>
+        <label><input type="radio" name="q2" value="wind"> Observation and instinct</label>
+        <label><input type="radio" name="q2" value="earth"> Experience and stability</label>
+      </div>
+
+      <div class="question-group">
+        <h3>🤝 Working with Others</h3>
+        <label>3. Your team role is usually:</label>
+        <label><input type="radio" name="q3" value="fire"> Motivator</label>
+        <label><input type="radio" name="q3" value="ice"> Strategist</label>
+        <label><input type="radio" name="q3" value="wind"> Idea generator</label>
+        <label><input type="radio" name="q3" value="earth"> Supporter</label>
+
+        <label>4. Which phrase fits you best?</label>
+        <label><input type="radio" name="q4" value="fire"> Let’s do it now!</label>
+        <label><input type="radio" name="q4" value="ice"> Think before you act.</label>
+        <label><input type="radio" name="q4" value="wind"> There’s another way.</label>
+        <label><input type="radio" name="q4" value="earth"> Step by step.</label>
+      </div>
+
+      <div class="question-group">
+        <h3>🌀 When Challenges Arise...</h3>
+        <label>5. When your team disagrees on a decision, you usually:</label>
+        <label><input type="radio" name="q5" value="fire"> Speak up quickly and push for clarity</label>
+        <label><input type="radio" name="q5" value="ice"> Analyze both sides to find the best logic</label>
+        <label><input type="radio" name="q5" value="wind"> Look for creative middle ground</label>
+        <label><input type="radio" name="q5" value="earth"> Ask to pause and reflect as a team</label>
+
+        <label>6. Under stress, your first reaction is usually:</label>
+        <label><input type="radio" name="q6" value="fire"> Take action and redirect energy</label>
+        <label><input type="radio" name="q6" value="ice"> Organize and prioritize tasks</label>
+        <label><input type="radio" name="q6" value="wind"> Distract and come back with fresh mind</label>
+        <label><input type="radio" name="q6" value="earth"> Seek support and restore routine</label>
+      </div>
+
+      <div class="question-group">
+        <h3>💬 How You Support Others</h3>
+        <label>7. When a friend confides in you, you typically:</label>
+        <label><input type="radio" name="q7" value="fire"> Motivate them with clear action ideas</label>
+        <label><input type="radio" name="q7" value="ice"> Help them dissect the situation logically</label>
+        <label><input type="radio" name="q7" value="wind"> Offer new perspectives and metaphors</label>
+        <label><input type="radio" name="q7" value="earth"> Listen deeply and offer calm presence</label>
+
+        <label>8. What personal strength do you value most?</label>
+        <label><input type="radio" name="q8" value="fire"> Courage and self-expression</label>
+        <label><input type="radio" name="q8" value="ice"> Clarity and critical thinking</label>
+        <label><input type="radio" name="q8" value="wind"> Flexibility and creativity</label>
+        <label><input type="radio" name="q8" value="earth"> Patience and reliability</label>
+      </div>
+
+      <button type="button" onclick="showResult()">🔮 Reveal My Magic Type</button>
+    </form>
+  </div>
+
+  <div id="loadingScreen" class="loading" style="display: none;">
+    <h2>Decoding your magical essence...</h2>
+    <img src="assets/magic-swirl.gif" class="loading-image" />
+    <div class="progress-bar"><div class="progress"></div></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>

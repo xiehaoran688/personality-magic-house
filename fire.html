@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fire Speaker</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- PWA: Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- PWA: iOS Support -->
+  <link rel="apple-touch-icon" href="assets/icon-512.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+</head>
+<body>
+
+  <video autoplay muted loop id="bgVideo">
+    <source src="assets/space-loop.mp4" type="video/mp4" />
+  </video>
+
+  <a href="index.html" class="return-btn">🔁 Test Again</a>
+  <button class="share-btn" onclick="copyResultLink()">🌐 Share Result</button>
+  <span id="copied-message" class="copied-message">✅ Link copied!</span>
+
+  <div class="image-wrapper">
+    <img src="assets/fire_card.png" class="card-image" />
+  </div>
+
+  <div class="lore-card">
+    <h3>📜 The World of Personality Magic</h3>
+    <p>
+      Beyond the stars lies the Personality Magic House, where ancient elemental spirits whisper truths about who we are. 
+      Through a ritual of reflection, your essence aligns with fire, ice, wind, or earth. 
+      Each choice reveals a unique magical role, waiting to be discovered...
+    </p>
+  </div>
+
+  <div class="feedback-box">
+    <p>🧙‍♂️ Did you enjoy this experience?</p>
+    <button onclick="submitFeedback('yes')">👍 Yes</button>
+    <button onclick="submitFeedback('no')">👎 Not really</button>
+    <div id="feedback-msg" class="feedback-msg"></div>
+  </div>
+
+  <div class="analysis-box">
+    <h2>🧠 Personality Insight: Fire Speaker</h2>
+    <p>
+      You are fueled by passion, expression, and the desire to act. Fire Speakers are natural motivators — your words and energy can light up a room. You crave immediacy, impact, and emotional authenticity.
+    </p>
+
+    <h3>🧍 How You Show Up in Real Life</h3>
+    <ul>
+      <li>You take initiative and often lead without being asked</li>
+      <li>You speak your mind clearly, sometimes too quickly</li>
+      <li>You energize others during high-stakes situations</li>
+      <li>You prefer to “do” rather than “wait”</li>
+    </ul>
+
+    <h3>⚠️ Challenges You May Face</h3>
+    <ul>
+      <li>Tendency to react before fully processing</li>
+      <li>Impatience with slower or more cautious personalities</li>
+      <li>Can burn out if not grounded</li>
+    </ul>
+
+    <h3>🌱 Growth Suggestions</h3>
+    <ul>
+      <li>Pause and breathe before responding emotionally</li>
+      <li>Practice mindful listening and reflection</li>
+      <li>Channel intensity into long-term passion projects</li>
+      <li>Surround yourself with people who balance your fire</li>
+    </ul>
+  </div>
+
+  <!-- JS Functions -->
+  <script>
+    function copyResultLink() {
+      const link = window.location.href;
+      navigator.clipboard.writeText(link).then(() => {
+        const msg = document.getElementById("copied-message");
+        msg.style.opacity = 1;
+        setTimeout(() => {
+          msg.style.opacity = 0;
+        }, 2000);
+      });
+    }
+
+    function submitFeedback(type) {
+      const msg = document.getElementById("feedback-msg");
+      msg.textContent = type === 'yes' ? "✨ Thank you for your feedback!" : "Thanks! We'll keep improving.";
+      msg.style.opacity = 1;
+      setTimeout(() => { msg.style.opacity = 0; }, 3000);
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('✅ Service Worker registered:', reg.scope))
+          .catch(err => console.error('❌ Service Worker registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

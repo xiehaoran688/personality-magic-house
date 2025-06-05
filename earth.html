@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Earth Guardian</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <video autoplay muted loop id="bgVideo">
+    <source src="assets/space-loop.mp4" type="video/mp4" />
+  </video>
+
+  <a href="index.html" class="return-btn">🔁 Test Again</a>
+  <button class="share-btn" onclick="copyResultLink()">🌐 Share Result</button>
+  <span id="copied-message" class="copied-message">✅ Link copied!</span>
+
+  <div class="image-wrapper">
+    <img src="assets/earth_card.png" class="card-image" />
+  </div>
+
+  <div class="lore-card">
+    <h3>📜 The World of Personality Magic</h3>
+    <p>
+      Beyond the stars lies the Personality Magic House, where ancient elemental spirits whisper truths about who we are.
+      Through a ritual of reflection, your essence aligns with fire, ice, wind, or earth.
+      Each choice reveals a unique magical role, waiting to be discovered...
+    </p>
+  </div>
+
+  <div class="feedback-box">
+    <p>🧙‍♂️ Did you enjoy this experience?</p>
+    <button onclick="submitFeedback('yes')">👍 Yes</button>
+    <button onclick="submitFeedback('no')">👎 Not really</button>
+    <div id="feedback-msg" class="feedback-msg"></div>
+  </div>
+
+  <div class="analysis-box">
+    <h2>🧠 Personality Insight: Earth Guardian</h2>
+    <p>
+      You are grounded, dependable, and patient. Earth Guardians provide stability and support to others. You move with care, value consistency, and are deeply loyal to people and processes you trust.
+    </p>
+
+    <h3>🧍 How You Show Up in Real Life</h3>
+    <ul>
+      <li>You value routine and gradual progress</li>
+      <li>You are someone others turn to for support</li>
+      <li>You prefer planning over improvising</li>
+      <li>You build deep relationships over time</li>
+    </ul>
+
+    <h3>⚠️ Challenges You May Face</h3>
+    <ul>
+      <li>Resistance to change or uncertainty</li>
+      <li>Struggles with flexibility or quick shifts</li>
+      <li>May avoid risk or emotional confrontation</li>
+    </ul>
+
+    <h3>🌱 Growth Suggestions</h3>
+    <ul>
+      <li>Explore small calculated risks outside your comfort zone</li>
+      <li>Balance stability with adaptability</li>
+      <li>Invite fresh perspectives from new people or experiences</li>
+      <li>Remember: growth can still be steady</li>
+    </ul>
+  </div>
+
+  <script>
+    function copyResultLink() {
+      const link = window.location.href;
+      navigator.clipboard.writeText(link).then(() => {
+        const msg = document.getElementById("copied-message");
+        msg.style.opacity = 1;
+        setTimeout(() => {
+          msg.style.opacity = 0;
+        }, 2000);
+      });
+    }
+
+    function submitFeedback(type) {
+      const msg = document.getElementById("feedback-msg");
+      msg.textContent = type === 'yes' ? "✨ Thank you for your feedback!" : "Thanks! We'll keep improving.";
+      msg.style.opacity = 1;
+      setTimeout(() => { msg.style.opacity = 0; }, 3000);
+    }
+  </script>
+</body>
+</html>

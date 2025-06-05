@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wind Seeker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <video autoplay muted loop id="bgVideo">
+    <source src="assets/space-loop.mp4" type="video/mp4" />
+  </video>
+
+  <a href="index.html" class="return-btn">🔁 Test Again</a>
+  <button class="share-btn" onclick="copyResultLink()">🌐 Share Result</button>
+  <span id="copied-message" class="copied-message">✅ Link copied!</span>
+
+  <div class="image-wrapper">
+    <img src="assets/wind_card.png" class="card-image" />
+  </div>
+
+  <div class="lore-card">
+    <h3>📜 The World of Personality Magic</h3>
+    <p>
+      Beyond the stars lies the Personality Magic House, where ancient elemental spirits whisper truths about who we are.
+      Through a ritual of reflection, your essence aligns with fire, ice, wind, or earth.
+      Each choice reveals a unique magical role, waiting to be discovered...
+    </p>
+  </div>
+
+  <div class="feedback-box">
+    <p>🧙‍♂️ Did you enjoy this experience?</p>
+    <button onclick="submitFeedback('yes')">👍 Yes</button>
+    <button onclick="submitFeedback('no')">👎 Not really</button>
+    <div id="feedback-msg" class="feedback-msg"></div>
+  </div>
+
+  <div class="analysis-box">
+    <h2>🧠 Personality Insight: Wind Seeker</h2>
+    <p>
+      You are creative, adaptable, and thoughtful. Wind Seekers embrace possibilities and thrive in change. You value ideas, flexibility, and flowing freely between situations with curiosity and imagination.
+    </p>
+
+    <h3>🧍 How You Show Up in Real Life</h3>
+    <ul>
+      <li>You brainstorm new perspectives and solutions</li>
+      <li>You’re comfortable in uncertainty and change</li>
+      <li>You avoid conflict by reframing and redirecting</li>
+      <li>You inspire others with optimism and insight</li>
+    </ul>
+
+    <h3>⚠️ Challenges You May Face</h3>
+    <ul>
+      <li>Difficulty staying focused or grounded</li>
+      <li>May seem indecisive or inconsistent</li>
+      <li>Can avoid difficult conversations or commitment</li>
+    </ul>
+
+    <h3>🌱 Growth Suggestions</h3>
+    <ul>
+      <li>Commit to one idea and follow through</li>
+      <li>Set time limits on brainstorming before acting</li>
+      <li>Embrace structure as a creative foundation</li>
+      <li>Balance exploration with consistency</li>
+    </ul>
+  </div>
+
+  <script>
+    function copyResultLink() {
+      const link = window.location.href;
+      navigator.clipboard.writeText(link).then(() => {
+        const msg = document.getElementById("copied-message");
+        msg.style.opacity = 1;
+        setTimeout(() => {
+          msg.style.opacity = 0;
+        }, 2000);
+      });
+    }
+
+    function submitFeedback(type) {
+      const msg = document.getElementById("feedback-msg");
+      msg.textContent = type === 'yes' ? "✨ Thank you for your feedback!" : "Thanks! We'll keep improving.";
+      msg.style.opacity = 1;
+      setTimeout(() => { msg.style.opacity = 0; }, 3000);
+    }
+  </script>
+</body>
+</html>

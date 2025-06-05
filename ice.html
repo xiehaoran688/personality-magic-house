@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ice Sage</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <video autoplay muted loop id="bgVideo">
+    <source src="assets/space-loop.mp4" type="video/mp4" />
+  </video>
+
+  <a href="index.html" class="return-btn">🔁 Test Again</a>
+  <button class="share-btn" onclick="copyResultLink()">🌐 Share Result</button>
+  <span id="copied-message" class="copied-message">✅ Link copied!</span>
+
+  <div class="image-wrapper">
+    <img src="assets/ice_card.png" class="card-image" />
+  </div>
+
+  <div class="lore-card">
+    <h3>📜 The World of Personality Magic</h3>
+    <p>
+      Beyond the stars lies the Personality Magic House, where ancient elemental spirits whisper truths about who we are.
+      Through a ritual of reflection, your essence aligns with fire, ice, wind, or earth.
+      Each choice reveals a unique magical role, waiting to be discovered...
+    </p>
+  </div>
+
+  <div class="feedback-box">
+    <p>🧙‍♂️ Did you enjoy this experience?</p>
+    <button onclick="submitFeedback('yes')">👍 Yes</button>
+    <button onclick="submitFeedback('no')">👎 Not really</button>
+    <div id="feedback-msg" class="feedback-msg"></div>
+  </div>
+
+  <div class="analysis-box">
+    <h2>🧠 Personality Insight: Ice Sage</h2>
+    <p>
+      You are calm, thoughtful, and analytical. Ice Sages seek clarity and structure in a chaotic world.
+      You observe before acting, and your logic often brings grounded wisdom to your surroundings.
+    </p>
+
+    <h3>🧍 How You Show Up in Real Life</h3>
+    <ul>
+      <li>You reflect deeply before speaking</li>
+      <li>You analyze situations with clarity</li>
+      <li>You bring order to group dynamics</li>
+      <li>You prefer measured, structured progress</li>
+    </ul>
+
+    <h3>⚠️ Challenges You May Face</h3>
+    <ul>
+      <li>Overthinking and analysis paralysis</li>
+      <li>Struggling with unpredictable people or chaos</li>
+      <li>Being seen as distant or emotionally detached</li>
+    </ul>
+
+    <h3>🌱 Growth Suggestions</h3>
+    <ul>
+      <li>Practice trusting your instincts as well as logic</li>
+      <li>Allow small doses of spontaneity</li>
+      <li>Share your thought process to build emotional connection</li>
+      <li>Balance structure with creative freedom</li>
+    </ul>
+  </div>
+
+  <script>
+    function copyResultLink() {
+      const link = window.location.href;
+      navigator.clipboard.writeText(link).then(() => {
+        const msg = document.getElementById("copied-message");
+        msg.style.opacity = 1;
+        setTimeout(() => {
+          msg.style.opacity = 0;
+        }, 2000);
+      });
+    }
+
+    function submitFeedback(type) {
+      const msg = document.getElementById("feedback-msg");
+      msg.textContent = type === 'yes' ? "✨ Thank you for your feedback!" : "Thanks! We'll keep improving.";
+      msg.style.opacity = 1;
+      setTimeout(() => { msg.style.opacity = 0; }, 3000);
+    }
+  </script>
+</body>
+</html>
