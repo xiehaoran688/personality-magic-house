@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Redirecting...</title>
-  <script>
-    // Redirect all unknown paths to homepage
-    window.location.href = "/personality-magic-house/index.html";
-  </script>
+  <meta http-equiv="refresh" content="1; url=/personality-magic-house/index.html" />
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+  </style>
 </head>
 <body>
+  <h2>✨ You’ve reached a mysterious space…</h2>
   <p>Redirecting to the Magic House...</p>
+  <script>
+    window.location.replace("/personality-magic-house/index.html");
+  </script>
 </body>
 </html>
